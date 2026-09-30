@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+        <!-- SEO & Open Graph Metadata -->
+        <meta name="description" content="Portfolio of Wiranto Millennium Sitinjak - Software Engineer & Lead Designer" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content="Portfolio of Wiranto Millennium Sitinjak - Software Engineer & Lead Designer" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://wiranto.portfolio.com" />
+        <meta property="og:image" content="https://placehold.co/1200x630/1e293b/cbd5e1?text=Wiranto+Portfolio" />
+        
+        <title>{title}</title>
+
+        <!-- Google Fonts: Inter -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+        <!-- Inline script to prevent flicker for theme and lang -->
+        <script is:inline>
+            (function() {
+                // Theme Setup (Default: Light)
+                const theme = localStorage.getItem('theme') || 'light';
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+
+                // Language Setup (Default: en)
+                const lang = localStorage.getItem('lang') || 'en';
+                document.documentElement.lang = lang;
+            })();
+        </script>
+	</head>
+	<body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans antialiased selection:bg-blue-500/30 overflow-x-hidden w-full">
+		<slot />
+	</body>
+</html>
+
+

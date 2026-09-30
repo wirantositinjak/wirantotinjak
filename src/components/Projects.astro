@@ -1,0 +1,60 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+const projects = [
+  {
+    slug: "kalam-kudus-lms",
+    titleKey: "proj.kalam.title",
+    descKey: "proj.kalam.desc",
+    imagePath: "../assets/projects/kalamkudus/login-role.webp",
+    tags: ["LMS", "Next.js", "Tailwind CSS"],
+    demoUrl: "#",
+    repoUrl: "#"
+  },
+  {
+    slug: "warehouse-app",
+    titleKey: "proj.warehouse.title",
+    descKey: "proj.warehouse.desc",
+    imagePath: "../assets/projects/warehouse/dashboar-warehouse-admin.png",
+    tags: ["React Native", "Expo", "Firebase", "Tailwind"],
+    demoUrl: "#",
+    repoUrl: "#"
+  },
+  {
+    slug: "diacheck-ai",
+    titleKey: "proj.diacheck.title",
+    descKey: "proj.diacheck.desc",
+    imagePath: "../assets/projects/diacheckai/homepage.png",
+    tags: ["Python", "Flask", "Scikit-Learn", "Machine Learning"],
+    demoUrl: "#",
+    repoUrl: "#"
+  }
+];
+---
+
+<section id="projects" class="py-24 bg-slate-50 dark:bg-slate-950 relative z-10 transition-colors duration-300 border-t border-slate-200 dark:border-slate-800/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-16">
+      <h2 data-i18n="proj.title" class="text-3xl md:text-5xl font-bold text-slate-800 dark:text-slate-100 mb-4 drop-shadow-sm">Featured Projects</h2>
+      <p data-i18n="proj.desc" class="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
+        Some of the digital solutions I have developed to solve specific problems and deliver real value.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <ProjectCard 
+          slug={project.slug}
+          titleKey={project.titleKey}
+          descKey={project.descKey}
+          imagePath={project.imagePath}
+          tags={project.tags}
+          demoUrl={project.demoUrl}
+          repoUrl={project.repoUrl}
+        />
+      ))}
+    </div>
+    
+  </div>
+</section>

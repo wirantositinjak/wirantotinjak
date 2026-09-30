@@ -1,0 +1,178 @@
+---
+// Navbar.astro
+---
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/#home" class="text-xl font-bold text-slate-900 dark:text-slate-100 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+          Wiranto<span class="text-blue-500">.</span>
+        </a>
+      </div>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/#home" data-i18n="nav.home" class="text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+        <a href="/#projects" data-i18n="nav.projects" class="text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+        <a href="/#experience" data-i18n="nav.experience" class="text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
+        <a href="/#about" data-i18n="nav.about" class="text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+        <a href="/#contact" data-i18n="nav.contact" class="text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+      </div>
+      
+      <!-- Toggles & Mobile Menu Button -->
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        
+        <!-- Language Toggle -->
+        <button id="lang-toggle" aria-label="Toggle Language" class="flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <span id="lang-text" class="text-sm font-bold uppercase">EN</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" aria-label="Toggle Theme" class="flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <!-- Sun Icon (Tampil di Mode Gelap) -->
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
+          </svg>
+          <!-- Moon Icon (Tampil di Mode Terang) -->
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+        </button>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" type="button" aria-label="Open Menu" class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 p-2 rounded-md transition-colors">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Mobile Menu Panel -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 absolute w-full left-0 shadow-lg transition-all">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a href="/#home" data-i18n="nav.home" class="block text-slate-600 dark:text-slate-300 hover:text-blue-500 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Home</a>
+      <a href="/#projects" data-i18n="nav.projects" class="block text-slate-600 dark:text-slate-300 hover:text-blue-500 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Projects</a>
+      <a href="/#experience" data-i18n="nav.experience" class="block text-slate-600 dark:text-slate-300 hover:text-blue-500 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Experience</a>
+      <a href="/#about" data-i18n="nav.about" class="block text-slate-600 dark:text-slate-300 hover:text-blue-500 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">About</a>
+      <a href="/#contact" data-i18n="nav.contact" class="block text-slate-600 dark:text-slate-300 hover:text-blue-500 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  import { translations, defaultLang } from '../utils/i18n';
+
+  // State
+  let isMobileMenuOpen = false;
+
+  // DOM Elements
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  
+  const langToggleBtn = document.getElementById('lang-toggle');
+  const langText = document.getElementById('lang-text');
+  
+  const mobileMenuBtn = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // --- THEME SETUP ---
+  function setupTheme() {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    // Toggle icons
+    if (currentTheme === 'dark') {
+      themeToggleLightIcon?.classList.remove('hidden');
+      themeToggleDarkIcon?.classList.add('hidden');
+    } else {
+      themeToggleDarkIcon?.classList.remove('hidden');
+      themeToggleLightIcon?.classList.add('hidden');
+    }
+  }
+
+  themeToggleBtn?.addEventListener('click', () => {
+    // Toggle class on root HTML
+    if (document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+    setupTheme();
+  });
+
+  // --- LANG SETUP ---
+  function updateI18nText(lang: string) {
+    const validLang = (lang === 'en' || lang === 'id') ? lang : defaultLang;
+    const dict = translations[validLang as keyof typeof translations];
+    
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n') as keyof typeof dict;
+      if (key && dict[key]) {
+        el.innerHTML = dict[key];
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder') as keyof typeof dict;
+      if (key && dict[key]) {
+        (el as HTMLInputElement).placeholder = dict[key];
+      }
+    });
+  }
+
+  function setupLang() {
+    const currentLang = localStorage.getItem('lang') || defaultLang;
+    if (langText) {
+      langText.textContent = currentLang === 'en' ? 'EN' : 'ID';
+    }
+    updateI18nText(currentLang);
+  }
+
+  langToggleBtn?.addEventListener('click', () => {
+    let currentLang = localStorage.getItem('lang') || defaultLang;
+    const newLang = currentLang === 'en' ? 'id' : 'en';
+    
+    // Save to storage and apply to DOM
+    localStorage.setItem('lang', newLang);
+    document.documentElement.lang = newLang;
+    
+    // Fire global event so other components (like Hero) can react
+    window.dispatchEvent(new Event('languageChange'));
+  });
+
+  // Listen to the custom event to update text internally
+  window.addEventListener('languageChange', () => {
+    setupLang();
+  });
+
+  // --- MOBILE MENU SETUP ---
+  mobileMenuBtn?.addEventListener('click', () => {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    if (isMobileMenuOpen) {
+      mobileMenu?.classList.remove('hidden');
+    } else {
+      mobileMenu?.classList.add('hidden');
+    }
+  });
+
+  // Close mobile menu when clicking any links inside it
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      isMobileMenuOpen = false;
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+
+  // Initialization Run
+  setupTheme();
+  setupLang();
+</script>
